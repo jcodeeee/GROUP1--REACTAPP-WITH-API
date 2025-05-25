@@ -12,6 +12,13 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]+$/;
+
+    if (!passwordPattern.test(password)) {
+      alert("Password must contain at least one uppercase letter, one lowercase letter, and one number.");
+      return;
+    }
+
     const user = { username, email, password };
     localStorage.setItem("user", JSON.stringify(user));
 
